@@ -123,3 +123,14 @@ automatically to Cloudflare Pages.
 The build publishes only `index.html` and `assets/`. The `infos/` folder stays
 in the repository as source material and is not served. No server code, no
 tracking, no third-party requests.
+
+The `agnogad.my.id` zone is on Cloudflare. If the Pages custom domain is not
+attached automatically, add a proxied CNAME in that zone:
+
+| Type | Name | Target | Proxy |
+| --- | --- | --- | --- |
+| CNAME | `agnogad` | `agnogad.pages.dev` | Proxied |
+
+Then add `agnogad.my.id` under the project's **Custom domains** settings. The
+Pages project must also have access to `agnogad/portfolio` in its GitHub App
+installation for pushes to trigger builds.
