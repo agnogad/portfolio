@@ -129,7 +129,7 @@ attached automatically, add a proxied CNAME in that zone:
 
 | Type | Name | Target | Proxy |
 | --- | --- | --- | --- |
-| CNAME | `agnogad` | `agnogad.pages.dev` | Proxied |
+| CNAME | `@` (`agnogad.my.id`) | `agnogad.pages.dev` | Proxied |
 
 Then add `agnogad.my.id` under the project's **Custom domains** settings. The
 Pages project must also have access to `agnogad/portfolio` in its GitHub App
