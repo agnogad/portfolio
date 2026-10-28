@@ -109,5 +109,17 @@ License. The licence for each remains with its foundry. three.js is MIT.
 
 ## Deploy
 
-Upload `index.html` and `assets/` to any static host: Cloudflare Pages, GitHub
-Pages, Netlify, or a VPS. No server code, no tracking, no third-party requests.
+Pushes to `main` on [GitHub](https://github.com/agnogad/portfolio) deploy
+automatically to Cloudflare Pages.
+
+| Setting | Value |
+| --- | --- |
+| Production URL | <https://agnogad.my.id> |
+| Pages project | `agnogad` (`agnogad.pages.dev`) |
+| Build command | `mkdir -p dist && cp -r index.html assets dist/` |
+| Build output | `dist` |
+| Custom domain | `agnogad.my.id` |
+
+The build publishes only `index.html` and `assets/`. The `infos/` folder stays
+in the repository as source material and is not served. No server code, no
+tracking, no third-party requests.
