@@ -1,0 +1,4 @@
+.DS_Store
+.taste-skill/
+node_modules/
+dist/

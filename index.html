@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>agnogad · less weight. ship more.</title>
+  <meta name="description" content="agnogad builds software across Rust, the web, desktop and Android: open-source tools, clean CLIs and small, fast sites.">
+  <meta name="theme-color" content="#07080a">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="agnogad · less weight. ship more.">
+  <meta property="og:description" content="I build across Rust, the web, desktop and Android. Open-source tools, clean CLIs, and a bias for less weight.">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Self-hosted fonts. No third-party requests at runtime. -->
+  <link rel="preload" href="assets/fonts/clash-display-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="modulepreload" href="assets/vendor/three.module.min.js">
+  <link rel="modulepreload" href="assets/vendor/three.core.js">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Floating island nav. The pill is the only glassy surface on the page. -->
+  <header class="site-nav" aria-label="Site">
+    <a class="brand" href="#top" aria-label="agnogad, back to top">agnogad<span class="brand__dot" aria-hidden="true"></span></a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="nav-cta" href="https://github.com/agnogad">
+        <span>GitHub</span>
+        <span class="nav-cta__icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" focusable="false"><path d="M4 12 12 4M5 4h7v7"/></svg>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu. Kept inert until opened so its links are not in the tab order. -->
+  <div class="menu" id="menu" aria-hidden="true" aria-label="Menu" inert>
+    <div class="menu__inner wrap">
+      <nav class="menu__nav" aria-label="Mobile">
+        <a class="menu__link" href="#about" style="--i:0">About</a>
+        <a class="menu__link" href="#work" style="--i:1">Work</a>
+        <a class="menu__link" href="#numbers" style="--i:2">Numbers</a>
+        <a class="menu__link" href="#receipts" style="--i:3">Receipts</a>
+        <a class="menu__link" href="#contact" style="--i:4">Contact</a>
+      </nav>
+      <div class="menu__foot">
+        <p class="meta">agnogad / open source / 2026</p>
+        <div class="menu__socials">
+          <a href="https://github.com/agnogad">GitHub</a>
+          <a href="https://x.com/Agnogad">X</a>
+          <a href="https://www.reddit.com/r/rust/">Reddit</a>
+          <a href="https://dev.to/agnogad">dev.to</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- 01. Hero. The cube assembles as you scroll. -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__sticky">
+        <canvas class="hero__canvas" id="scene" aria-hidden="true"></canvas>
+        <div class="hero__aura" aria-hidden="true"></div>
+
+        <div class="hero__inner wrap">
+          <div class="hero__copy">
+            <h1 id="hero-title">
+              <span class="line"><span>Less weight.</span></span>
+              <span class="line"><span class="accent">Ship more.</span></span>
+            </h1>
+            <p class="hero__lede">I'm <strong>agnogad</strong>. I build across Rust, the web, desktop and Android, with a bias for small tools, clean CLIs, and software that does one thing well.</p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="#work">
+                <span>See the work</span>
+                <span class="button__icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </span>
+              </a>
+              <a class="button button--ghost" href="https://dev.to/agnogad">
+                <span>Read the writing</span>
+                <span class="button__icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" focusable="false"><path d="M4 12 12 4M5 4h7v7"/></svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__meta">
+          <div class="wrap">
+            <p class="hero__status"><span class="dot" aria-hidden="true"></span> Rust <span class="slash">/</span> TypeScript <span class="slash">/</span> Android</p>
+            <a class="scroll-cue" href="#about">
+              <span data-scroll-label>Scroll to build</span>
+              <span class="scroll-cue__line" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capability ticker. Decorative, so it is hidden from assistive tech. -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <div class="ticker__group">
+          <span>Rust</span><i>+</i>
+          <span>Static sites</span><i>+</i>
+          <span>CLI tools</span><i>+</i>
+          <span>Tauri 2</span><i>+</i>
+          <span>Android</span><i>+</i>
+          <span>GitHub Actions</span><i>+</i>
+          <span>No bundler</span><i>+</i>
+          <span>Open source</span><i>+</i>
+        </div>
+        <div class="ticker__group">
+          <span>Rust</span><i>+</i>
+          <span>Static sites</span><i>+</i>
+          <span>CLI tools</span><i>+</i>
+          <span>Tauri 2</span><i>+</i>
+          <span>Android</span><i>+</i>
+          <span>GitHub Actions</span><i>+</i>
+          <span>No bundler</span><i>+</i>
+          <span>Open source</span><i>+</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02. About. Statement left, short version right. -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="about__grid">
+          <div class="about__intro" data-reveal>
+            <h2 id="about-title">I have a bias<br>for <span class="accent">shipping.</span></h2>
+            <p class="about__kicker">Most of what I make starts with the same complaint: the tool is heavier than the job.</p>
+          </div>
+
+          <div class="about__body" data-reveal>
+            <p>I'm <strong>agnogad</strong>. I build software across Rust, the web, desktop and Android. I like problems I can solve with a single binary, a clean CLI, or a simple static site.</p>
+            <p>Most of my projects start with the same question: why is this heavier than the job? That's how <strong>agno</strong> began. But it's one thread. I also work on PixiAnime's desktop and Android clients, a web version of Kütüphanem, and Turkish-SkyStream. Different platforms, same instinct: keep the surface small and the behavior obvious.</p>
+            <p>I write about the process on dev.to, and post about Rust and the projects on X. Claude and OpenRouter are part of my daily workflow, next to Supabase, Cloudflare, Fly.io, Render and a Contabo VPS.</p>
+
+            <blockquote>I'd rather write the tool I need than install a framework to do it.</blockquote>
+
+            <div class="terminal-shell bezel">
+              <div class="terminal">
+                <div class="terminal__bar">
+                  <span class="terminal__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="terminal__title">agnogad / whoami</span>
+                  <span class="terminal__badge"><span class="dot" aria-hidden="true"></span>ok</span>
+                </div>
+                <pre><code><span class="t-prompt">$</span> whoami
+agnogad
+<span class="t-ok">+</span> builds  Rust / web / desktop
+<span class="t-ok">+</span> ships   small tools, clean CLIs
+<span class="t-ok">+</span> uses    Claude / OpenRouter
+<span class="t-dim">/</span> open source / no trackers</code></pre>
+              </div>
+            </div>
+            <p class="terminal-note">The short version. The work is below.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Selected work. agno leads; the rest of the work follows. -->
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="work__head" data-stagger>
+          <h2 id="work-title" data-reveal>Selected<br><span class="muted">work.</span></h2>
+          <p data-reveal>A few things I've built across Rust, the web, desktop and Android. <strong>agno</strong> has the longest paper trail; the rest of the work is below.</p>
+        </div>
+
+        <div class="feature-shell bezel" data-reveal>
+          <article class="feature">
+            <div class="feature__copy">
+              <h3>agno</h3>
+              <div class="feature__meta">
+                <span class="chip">Static site generator</span>
+                <span class="meta">v0.3.7 / MIT</span>
+              </div>
+              <p class="feature__desc">The project that started with a complaint: Astro felt slow for my own blog. So I wrote a static site generator in Rust. Markdown and minijinja templates go in; plain files come out; one 4.2 MB binary, no Node, no bundler, no plugin runtime. The documentation site is built with agno itself.</p>
+
+              <dl class="feature__facts">
+                <div><dt>Binary</dt><dd>4.2 MB</dd></div>
+                <div><dt>Templates</dt><dd>minijinja</dd></div>
+                <div><dt>Output</dt><dd>Plain files</dd></div>
+              </dl>
+
+              <div class="feature__links">
+                <a class="link-arrow" href="https://github.com/agnogad/agno">Repository <span aria-hidden="true">↗</span></a>
+                <a class="link-arrow" href="https://agno-docs.pages.dev">Documentation <span aria-hidden="true">↗</span></a>
+              </div>
+
+              <div class="command">
+                <span class="command__prompt" aria-hidden="true">$</span>
+                <code>cargo install agno</code>
+                <button class="command__copy" type="button" data-copy="cargo install agno" aria-label="Copy the install command">
+                  <span>Copy</span>
+                  <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="5" y="5" width="8" height="8" rx="1.2"/><path d="M11 5V3.2A1.2 1.2 0 0 0 9.8 2H3.2A1.2 1.2 0 0 0 2 3.2v6.6A1.2 1.2 0 0 0 3.2 11H5"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="feature__visual">
+              <a class="shot" href="https://agno-docs.pages.dev" aria-label="Open the agno documentation site">
+                <span class="shot__browser" data-tilt>
+                  <span class="shot__bar">
+                    <span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="shot__url">agno-docs.pages.dev</span>
+                    <span class="shot__live"><span class="dot" aria-hidden="true"></span>live</span>
+                  </span>
+                  <img src="assets/img/agno-docs.webp" width="1440" height="1000" alt="The agno documentation site: a dark page with the headline 'A static site generator for sites where content is the product', a terminal showing agno build, and benchmark figures." loading="lazy" decoding="async">
+                </span>
+                <span class="shot__caption">Built with agno itself <span aria-hidden="true">↗</span></span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="also">
+          <div class="also__head" data-reveal>
+            <h3>Also building</h3>
+            <p>Four other things, same bias.</p>
+          </div>
+
+          <div class="also__grid" data-stagger>
+            <a class="proj proj--wide" href="https://github.com/pixiAnime" data-reveal>
+              <span class="proj__top"><span class="proj__arrow" aria-hidden="true">↗</span></span>
+              <h4>pixiDesktop</h4>
+              <p>The desktop client for PixiAnime, wrapping the React web client in Tauri 2 and Rust. HLS playback and an SSRF-guarded proxy, with releases on GitHub Actions.</p>
+              <span class="proj__tag">Tauri 2 / Rust / HLS</span>
+            </a>
+
+            <a class="proj" href="https://github.com/pixiAnime" data-reveal>
+              <span class="proj__top"><span class="proj__arrow" aria-hidden="true">↗</span></span>
+              <h4>pixiAndroid</h4>
+              <p>The Android client for PixiAnime. Playback handoff to external players and in-app updates.</p>
+              <span class="proj__tag">Android / CI</span>
+            </a>
+
+            <a class="proj" href="https://github.com/agnogad/kutuphanem" data-reveal>
+              <span class="proj__top"><span class="proj__arrow" aria-hidden="true">↗</span></span>
+              <h4>Kütüphanem</h4>
+              <p>A Turkish book archive, and the web version I built for it. TypeScript from the interface down to the data handling.</p>
+              <span class="proj__tag">TypeScript</span>
+            </a>
+
+            <a class="proj proj--wide" href="https://github.com/agnogad/Turkish-SkyStream" data-reveal>
+              <span class="proj__top"><span class="proj__arrow" aria-hidden="true">↗</span></span>
+              <h4>Turkish-SkyStream</h4>
+              <p>A Turkish-language extension repository for SkyStream. Small, focused additions that make the app work in Turkish.</p>
+              <span class="proj__tag">JavaScript</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. Numbers. Animated only once, and only when in view. -->
+    <section class="section numbers" id="numbers" aria-labelledby="numbers-title">
+      <div class="wrap">
+        <div class="numbers__head" data-stagger>
+          <h2 id="numbers-title" data-reveal>Measured,<br><span class="muted">not claimed.</span></h2>
+          <p data-reveal>I care about speed, but I'd rather show the receipts. These are <strong>agno</strong>'s cold-build numbers from the repo's benchmark suite. The methodology and the caveats are in the docs, and they're worth reading before quoting any of this.</p>
+        </div>
+
+        <div class="stats" data-stagger>
+          <div class="stat" data-reveal>
+            <p class="stat__value"><span class="stat__num" data-count="4.2" data-decimals="1">4.2</span><span class="stat__unit">MB</span></p>
+            <p class="stat__label">The whole binary</p>
+            <p class="stat__note">Runtime included. No Node, no bundler, no plugin process.</p>
+          </div>
+          <div class="stat" data-reveal>
+            <p class="stat__value"><span class="stat__num" data-count="106">106</span><span class="stat__unit">ms</span></p>
+            <p class="stat__label">Cold build</p>
+            <p class="stat__note">For 1,000 plain posts, on the reference machine.</p>
+          </div>
+          <div class="stat" data-reveal>
+            <p class="stat__value"><span class="stat__num" data-count="7642">7,642</span><span class="stat__unit">/s</span></p>
+            <p class="stat__label">Sustained pages</p>
+            <p class="stat__note">At 10,000 posts. The corpus shape matters.</p>
+          </div>
+          <div class="stat" data-reveal>
+            <p class="stat__value"><span class="stat__num" data-count="185">185</span><span class="stat__unit">×</span></p>
+            <p class="stat__label">Against Astro</p>
+            <p class="stat__note">Top of the 16.7–185× range. Hugo tops out at 12.8×.</p>
+          </div>
+        </div>
+
+        <p class="source">Source: <a href="https://agno-docs.pages.dev/docs/benchmark/">agno benchmark docs</a> and the <a href="https://dev.to/agnogad/i-built-a-static-site-generator-in-rust-because-astro-felt-slow-3fbf">dev.to write-up</a>, tested up to 10,000 posts. Filesystem, CPU and corpus shape move the result.</p>
+      </div>
+    </section>
+
+    <!-- 05. Kit. Tools, not a logo wall. -->
+    <section class="section kit" id="kit" aria-labelledby="kit-title">
+      <div class="wrap">
+        <div class="kit__grid">
+          <div class="kit__intro" data-reveal>
+            <h2 id="kit-title">The kit.</h2>
+            <p>Tools I reach for, not a logo wall. If it can be one binary, I'd prefer it were.</p>
+          </div>
+
+          <div class="kit__groups" data-stagger>
+            <div class="kit__group" data-reveal>
+              <h3>Languages</h3>
+              <ul class="tags">
+                <li>Rust</li><li>TypeScript</li><li>JavaScript</li>
+              </ul>
+            </div>
+            <div class="kit__group" data-reveal>
+              <h3>Building</h3>
+              <ul class="tags">
+                <li>CLI tools</li><li>Static site generation</li><li>Search indexing</li><li>GitHub Actions</li><li>Open-source maintenance</li>
+              </ul>
+            </div>
+            <div class="kit__group" data-reveal>
+              <h3>Platforms</h3>
+              <ul class="tags">
+                <li>Tauri 2</li><li>HLS</li><li>Android</li><li>Cloudflare Pages</li><li>Supabase</li><li>Fly.io</li><li>Render</li><li>Contabo VPS</li><li>UptimeRobot</li><li>Puter</li>
+              </ul>
+            </div>
+            <div class="kit__group" data-reveal>
+              <h3>AI loop</h3>
+              <ul class="tags">
+                <li>Claude</li><li>OpenRouter</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. Receipts. Real screenshots, dated. -->
+    <section class="section receipts" id="receipts" aria-labelledby="receipts-title">
+      <div class="wrap">
+        <div class="receipts__head" data-stagger>
+          <h2 id="receipts-title" data-reveal>Recent<br><span class="muted">receipts.</span></h2>
+          <p data-reveal>A release, a write-up, a corpus selection. Proof from the work, not adjectives. Check any line.</p>
+        </div>
+
+        <div class="receipts__grid" data-stagger>
+          <a class="receipt bezel" href="https://crates.io/crates/agno" data-reveal>
+            <span class="receipt__inner">
+              <span class="receipt__media">
+                <img src="assets/img/agno-crate.webp" width="940" height="660" alt="agno's crates.io page showing version 0.3.7 and the install command cargo install agno." loading="lazy" decoding="async">
+              </span>
+              <span class="receipt__body">
+                <span class="receipt__date">26 Oct 2026 / crates.io</span>
+                <span class="receipt__title">agno v0.3.7 is out</span>
+                <span class="receipt__desc">A static Linux musl build and a pure-Rust syntax highlighter.</span>
+                <span class="receipt__link">Release <span aria-hidden="true">↗</span></span>
+              </span>
+            </span>
+          </a>
+
+          <a class="receipt bezel" href="https://dev.to/agnogad/i-built-a-static-site-generator-in-rust-because-astro-felt-slow-3fbf" data-reveal>
+            <span class="receipt__inner">
+              <span class="receipt__media">
+                <img src="assets/img/agno-article.webp" width="890" height="590" alt="The dev.to article 'I built a static site generator in Rust because Astro felt slow' showing the opening paragraphs." loading="lazy" decoding="async">
+              </span>
+              <span class="receipt__body">
+                <span class="receipt__date">23 Oct 2026 / dev.to</span>
+                <span class="receipt__title">Why I built agno</span>
+                <span class="receipt__desc">What felt slow, and what the benchmark actually measured.</span>
+                <span class="receipt__link">Read the write-up <span aria-hidden="true">↗</span></span>
+              </span>
+            </span>
+          </a>
+
+          <a class="receipt bezel" href="https://hub.xerj.org/contributors/agnogad" data-reveal>
+            <span class="receipt__inner">
+              <span class="receipt__media receipt__media--contain">
+                <img src="assets/img/xerj-record.webp" width="765" height="290" alt="The XERJ Corpus Hub contributor record for agnogad: 1 corpus, 1 selected commit, 6 files, 212 lines, 8 GitHub stars." loading="lazy" decoding="async">
+              </span>
+              <span class="receipt__body">
+                <span class="receipt__date">23 Oct 2026 / XERJ</span>
+                <span class="receipt__title">Selected for the Corpus Hub</span>
+                <span class="receipt__desc">One agno commit, six files, 212 lines, used as an agent reference.</span>
+                <span class="receipt__link">Profile <span aria-hidden="true">↗</span></span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. Contact. Real links, one honest placeholder. -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact__head" data-stagger>
+          <h2 id="contact-title" data-reveal>GitHub or <span class="accent">X.</span></h2>
+          <p data-reveal>No form. No newsletter. The rest are there too. Just the places I actually post.</p>
+        </div>
+
+        <div class="contact__grid" data-stagger>
+          <a class="contact-card" href="https://github.com/agnogad" data-reveal>
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg>
+            </span>
+            <span class="contact-card__text"><span class="contact-card__name">GitHub</span><span class="contact-card__meta">@agnogad</span></span>
+            <span class="contact-card__arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="contact-card" href="https://x.com/Agnogad" data-reveal>
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>
+            </span>
+            <span class="contact-card__text"><span class="contact-card__name">X</span><span class="contact-card__meta">@Agnogad</span></span>
+            <span class="contact-card__arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="contact-card" href="https://www.reddit.com/r/rust/" data-reveal>
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286A.72.72 0 0 0 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0Zm4.388 3.199a1.999 1.999 0 1 1-1.947 2.46v.002a2.37 2.37 0 0 1-1.153.291c-1.4 0-2.554 1.146-2.574 2.553a2.36 2.36 0 0 1 1.013-.232c1.63 0 2.95 1.32 2.95 2.95a2.95 2.95 0 0 1-5.9 0c0-1.258.788-2.33 1.894-2.751.021-2.146 1.766-3.88 3.917-3.88.4 0 .79.06 1.158.174a1.997 1.997 0 0 1 1.592-.997ZM7.013 12.986a1.813 1.813 0 1 1 0 3.627 1.813 1.813 0 0 1 0-3.627Zm9.974 0a1.813 1.813 0 1 1 0 3.627 1.813 1.813 0 0 1 0-3.627Zm-9.56 5.583a.72.72 0 0 1 .969-.206c.87.554 1.92.85 3.13.85 1.188 0 2.219-.28 3.074-.812a1.682 1.682 0 0 1 1.302-.339.72.72 0 0 1-.271 1.414.24.24 0 0 0-.143.03c-.742.462-1.617.705-2.738.705-1.139 0-2.03-.257-2.798-.746a.72.72 0 0 1-.206-.996Z"/></svg>
+            </span>
+            <span class="contact-card__text"><span class="contact-card__name">Reddit</span><span class="contact-card__meta">r/rust</span></span>
+            <span class="contact-card__arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="contact-card" href="https://dev.to/agnogad" data-reveal>
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M0 4.94v14.12h24V4.94H0Zm8.56 10.36c-.44.58-1.06.77-2.5.77H4.62V8.2h1.44c1.44 0 2.06.19 2.5.77.28.36.3.42.3 3.13 0 2.71-.02 2.77-.3 3.13v.07Zm6.9-5.9h-2.9v1.7h1.8v1.6h-1.8v1.7h2.9v1.66h-4.2V8.2h4.2v1.2Zm4.44 5.2c-.3.6-.7.87-1.5.87-.5 0-.9-.16-1.2-.5-.3-.34-.44-.8-.44-1.4v-3.7h1.34v3.5c0 .3.06.5.2.66.14.15.3.23.5.23.2 0 .4-.08.54-.23.14-.15.2-.35.2-.65v-3.5h1.34v3.7c0 .6-.14 1.06-.44 1.4l-.54-.38Z"/></svg>
+            </span>
+            <span class="contact-card__text"><span class="contact-card__name">dev.to</span><span class="contact-card__meta">@agnogad</span></span>
+            <span class="contact-card__arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <div class="contact-card contact-card--soon" data-reveal>
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.515.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286ZM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189Zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+            </span>
+            <span class="contact-card__text"><span class="contact-card__name">Discord</span><span class="contact-card__meta">link to come</span></span>
+            <span class="contact-card__arrow contact-card__arrow--muted" aria-hidden="true">·</span>
+          </div>
+
+          <a class="contact-card" href="#top" data-reveal>
+            <span class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" focusable="false"><path d="M8 13V3M4 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="contact-card__text"><span class="contact-card__name">Back to top</span><span class="contact-card__meta">Same page</span></span>
+            <span class="contact-card__arrow" aria-hidden="true">↑</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__top">
+      <p class="footer__line">Good software should feel light.</p>
+      <a class="button button--ghost button--small" href="#top">
+        <span>Back to top</span>
+        <span class="button__icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" focusable="false"><path d="M8 13V3M4 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+    <p class="footer__word" aria-hidden="true">agnogad<span class="footer__dot">.</span></p>
+    <div class="wrap footer__bottom">
+      <p>© 2026 agnogad</p>
+      <p>Built with three.js. No tracking.</p>
+      <p>Less weight, more often.</p>
+    </div>
+  </footer>
+
+  <div class="sr-only" aria-live="polite" id="live-region"></div>
+
+  <script type="module" src="assets/js/scene.js"></script>
+</body>
+</html>
